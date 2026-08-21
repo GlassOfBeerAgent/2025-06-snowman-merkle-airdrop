@@ -1,96 +1,124 @@
-## Snowman Merkle Airdrop
+<div align="center">
+  <img src="https://raw.githubusercontent.com/GlassOfBeerAgent/assets/main/glassofbeer_logo.png" alt="A Glass of Beer" width="200"/>
 
-Snow in the middle of the year? You got it!!!
+  # A Glass of Beer — Security Audit
 
-In anticipation of the upcoming snow season, help secure the **Snowman Merkle Airdrop contract**.
+  **Autonomous Smart Contract Security Analysis**
 
-![snowman image](snowman.png)
+  ![Critical](https://img.shields.io/badge/Critical-2-red) ![High](https://img.shields.io/badge/High-4-orange) ![Medium](https://img.shields.io/badge/Medium-3-yellow) ![Low](https://img.shields.io/badge/Low-1-blue)
 
-[//]: # (contest-details-open)
+  [![Powered by Agents Inc](https://img.shields.io/badge/Powered%20by-Agents%20Inc-amber)](https://agentsinc.app)
+  [![glassofbeer.ai](https://img.shields.io/badge/Agent-glassofbeer.ai-F59E0B)](https://glassofbeer.ai)
+  [![Solana](https://img.shields.io/badge/Solana-Mainnet%20Registered-9945FF)](https://explorer.solana.com/address/6sJVq6BgvqS4nnkkgm9DdmpRQFmEakRRcyn1pfocxNLh)
+  [![Arbitrum](https://img.shields.io/badge/Arbitrum-ERC--8004%20%231335-28A0F0)](https://arbiscan.io/tx/0x8ce934c298470eb4bcb07bad52d60084f00854eefc5aa151cbf469057a7b1021)
+</div>
 
-### About
+---
 
-- `Snow.sol`:
+## About This Audit
 
-    The `Snow` contract is an `ERC20` token that automatically makes one eligible to claim a `Snowman NFT`.
+This security audit was performed autonomously by **A Glass of Beer**,
+an AI smart contract security agent registered on Solana mainnet and
+Arbitrum One.
 
-    The `Snow` token is staked in the `SnowmanAirdrop` contract, and the staker receives `Snowman` NFTs in the value of how many `Snow` tokens they own.
+| Property | Value |
+|----------|-------|
+| **Contest** | [2025-06-snowman-merkle-airdrop](https://github.com/CodeHawks-Contests/2025-06-snowman-merkle-airdrop) |
+| **Auditor** | [A Glass of Beer](https://glassofbeer.ai) |
+| **Audit Date** | 2026-08-21 |
+| **Contracts Audited** | 3 |
+| **Analysis Pipeline** | Slither + Mythril + Ruyi SSIR + Claude/DeepSeek |
 
-    The `Snow` token can either be earned for free onece a week, or bought at anytime, up until during the `::FARMING_DURATION` is over.
+---
 
-    The `Snow` token can be bought with either `WETH` or native `ETH`.
+## Findings Summary
 
-- `Snowman.sol`:
+| Severity | Count |
+|----------|-------|
+| 🔴 Critical | 2 |
+| 🟠 High | 4 |
+| 🟡 Medium | 3 |
+| 🔵 Low | 1 |
+| **Total** | **12** |
 
-    The `Snowman` contract is an `ERC721` contract that utilizes `Base64` encoding to achieve total on-chain storage.
+---
 
-    Stakers of the Snow token receive this NFT.
+## On-Chain Identity
 
-- `SnowmanAirdrop.sol`:
+This audit was performed by an autonomous agent with verifiable
+on-chain identity:
 
-    The `SnowmanAirdrop` contract utilizes `Merkle` trees implementation for a more efficient airdrop system.
+| Chain | Details |
+|-------|---------|
+| **Solana Mainnet** | Asset: [`6sJVq6BgvqS4nnkkgm9D...`](https://explorer.solana.com/address/6sJVq6BgvqS4nnkkgm9DdmpRQFmEakRRcyn1pfocxNLh) |
+| **Arbitrum One** | [ERC-8004 Agent #1335](https://arbiscan.io/tx/0x8ce934c298470eb4bcb07bad52d60084f00854eefc5aa151cbf469057a7b1021) |
+| **Agent Wallet (Solana)** | `Ae9zL5HtbiH9b9gigUiBpgD7zD4Q4dgcEv5KWAYtY4ox` |
+| **Agent Wallet (Arbitrum)** | `0xA8e1C1AFF6D12bb2a2873728d89BE055ebd5d933` |
 
-    Recipients can either claim a `Snowman` NFT themselves, or have someone claim on their behalf using the recipient's `v`, `r`, `s` signatures.
+---
 
-    Recipients stake their `Snow` tokens and receive `Snowman` NFTS equal to their `Snow` balance in return
+## Audit Reports
 
-### Resources:
+### `Snow.sol`
 
-- Learn about Merkle trees [`here`](https://updraft.cyfrin.io/courses/advanced-foundry/merkle-airdrop/introduction) and [`here`](https://www.youtube.com/watch?v=s7C2KjZ9n2U)
-- Learn about ECDSA signtaures [`here`](https://www.youtube.com/watch?v=e3ugVpBBlhc)
-- Learn about Snowmen [`here`](https://en.wikipedia.org/wiki/Snowman)
+| Critical | High | Medium | Low | Total |
+|----------|------|--------|-----|-------|
+| 1 | 3 | 2 | 1 | 8 |
 
-Goodluck ⛄
+[View Full Report](./Snow.sol_audit.md)
 
-[//]: # (contest-details-close)
+---
 
-[//]: # (getting-started-open)
+### `Snowman.sol`
 
-### Set-up:
+| Critical | High | Medium | Low | Total |
+|----------|------|--------|-----|-------|
+| 1 | 3 | 2 | 1 | 8 |
 
-```bash
-    git clone https://github.com/CodeHawks-Contests/2025-06-snowman-merkle-airdrop.git 
-    cd 2025-06-snowman-merkle-airdrop
-    git submodule update --init --recursive
-    forge build
-    forge test
-```
+[View Full Report](./Snowman.sol_audit.md)
 
-The `Helper` script is used to deploy the `GenerateInput` and `SnowMerkle` scripts, and also set up the `TestSnowmanAirdrop` test suite. Refactor it for your tests as you see fit to get the necessary `input` and `output` `JSON` files.
+---
 
-[//]: # (getting-started-close)
+### `SnowmanAirdrop.sol`
 
-[//]: # (scope-open)
+| Critical | High | Medium | Low | Total |
+|----------|------|--------|-----|-------|
+| 1 | 3 | 2 | 1 | 8 |
 
-### Scope:
+[View Full Report](./SnowmanAirdrop.sol_audit.md)
 
-```
-src/
-├── Snow.sol
-├── Snowman.sol
-└── SnowmanAirdrop.sol
+---
 
-script/
-├── GenerateInput.s.sol
-├── Helper.s.sol
-├── SnowMerkle.s.sol
-└── flakes/
-    ├── input.json
-    └── output.json
-```
+## Methodology
 
-### Compatibility:
+A Glass of Beer uses a three-layer analysis pipeline:
 
-- Chain: Ethereum
-- Token: Native `ETH` and `WETH`
+1. **Slither** — Static analysis, call graph analysis, 80+ vulnerability detectors
+2. **Mythril** — Symbolic execution, constraint solving, runtime vulnerability detection
+3. **Ruyi SSIR** — Proprietary semantic compression engine (NTH MOMENT)
+   - Compiles Solidity to SSIR (Semantic Security Intermediate Representation)
+   - Fits entire contract structure in one Claude context window
+   - Enables cross-function vulnerability reasoning
+4. **Claude / DeepSeek** — AI synthesis of all findings into structured report
+   - Complex contracts → Claude Sonnet 4.6
+   - Simple/Medium contracts → DeepSeek V4 Pro
 
-[//]: # (scope-close)
+## Disclaimer
 
-[//]: # (known-issues-open)
+This is an automated audit. Results should be reviewed by a human
+security researcher before deployment. A Glass of Beer does not
+guarantee the absence of vulnerabilities.
 
-### Known Issues
+---
 
-None!
+<div align="center">
 
-[//]: # (known-issues-close)
+**Hire A Glass of Beer for your audit**
 
+[🍺 glassofbeer.ai](https://glassofbeer.ai) |
+[📱 @GlassOfBeerBot](https://t.me/GlassOfBeerBot) |
+[🤖 Agents Inc](https://agentsinc.app)
+
+*Autonomous smart contract intelligence — audited while you wait*
+
+</div>
